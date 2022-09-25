@@ -14,9 +14,9 @@ const ItemListContainer = ({tittle}) =>{
     useEffect(() =>{
 
         getDocs( collection (db, 'products')).then (response => {
-            const productsAdapted = response.docs.map (doc => {
-                const data = doc.data()
-                return {id: doc.id,...data}
+            const productsAdapted = response.docs.map (element => {
+                const data = element.data()
+                return {id: element.id,...data}
             })
             setProducts(productsAdapted)
         }).catch (error => {

@@ -1,0 +1,13 @@
+.carrito {
+    height: 20px;
+}
+.m-span-cart {
+    position: relative;
+    top: 4px;
+    left: 3px;
+    font-size: 1.1rem;
+    color: black;
+}
+.m-a-cart {
+    text-decoration: none;
+}

@@ -1,0 +1,94 @@
+.m-txt-a {
+    display: block;
+}
+h1 {
+    color: black;
+    margin-top: 32px;
+    text-transform: uppercase;
+}
+h1 .big {
+    font-size: 7.1429rem;
+    font-weight: 600;
+    line-height: 7.1429rem;
+}
+h1 .small{
+    font-weight: 500;
+    line-height: 2.3571rem;
+}
+h1 span{
+    display: block;
+}
+.fadeAtScroll {
+    will-change: transform,opacity;
+}
+.m-hero-bottom .m-hero-img-ctn {
+    height: 100%;
+}
+.m-hero-img-ctn {
+    height: 100%;
+}
+.m-hero-bottom img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+.m-hero-bottom {
+    grid-column: 1/25;
+    height: calc(41vh - 17px);
+    margin-bottom: 5px;
+    min-height: 250px;
+    overflow: hidden;
+}
+.m-hero-top .m-hero-subtitle {
+    font-size: 14px;
+    line-height: 19px;
+    margin: 10px auto auto;
+    text-transform: uppercase;
+    width: 65%;
+}
+.m-hero-top h1 .big {
+    font-size: 4.81rem;
+    line-height: 5rem;
+}
+.m-hero-top .small {
+    font-size: 1.56rem;
+}
+.m-hero-top {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    grid-column: 3/23;
+    height: calc(59vh - 22px);
+    justify-content: center;
+    min-height: 290px;
+    text-align: center;
+} 
+
+.contaiiner {
+    display: grid;
+    grid-template-columns: repeat(var(--nb-col),1fr);
+}
+
+  .btnB {
+        width: 150px;
+        background-color: transparent;
+        font-weight: semibold;
+        color: #444;
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+        border: 2px solid #eee;
+        border-radius: .5rem;
+        cursor: pointer;
+        transition: all is ease;
+        box-shadow: .5rem .5rem 1rem #ccc,
+        -.5rem -.5rem 1rem #fff;
+    }
+    .btnB:hover{
+        box-shadow: .5rem .5rem 1rem #fff,
+            -.5rem -.5rem 1rem #ccc;
+    }
+    .btnB:active{
+        box-shadow: inset .5rem 1rem #fff,
+           inset  -.5rem -.5rem 1rem #ccc;
+    }

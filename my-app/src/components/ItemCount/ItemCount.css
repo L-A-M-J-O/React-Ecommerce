@@ -1,0 +1,18 @@
+
+input{
+    width: 4rem;
+    text-align: center;
+}
+
+.btnC {
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all is ease;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 12px;
+}

@@ -10,12 +10,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartContextProvider } from './context/CartContext';
 
 function App() {
-
   return (
     <div className="App">
       <CartContextProvider>
         <BrowserRouter>
           <NavbarMain/>
+          <button></button>
           <Routes className='main'>
           <Route path="/" element={<Banner/>}/>
             <Route path='/country' element={<Colombia/>}/>

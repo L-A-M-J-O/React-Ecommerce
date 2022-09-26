@@ -8,14 +8,24 @@ import Colombia from './components/Country/Colombia';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartContextProvider } from './context/CartContext';
+import { useState } from 'react';
 
 function App() {
+
+  const [click, setClick] = useState ( );
+
+
+
+
+
+
 
   return (
     <div className="App">
       <CartContextProvider>
         <BrowserRouter>
           <NavbarMain/>
+          <button>Clik</button>
           <Routes className='main'>
           <Route path="/" element={<Banner/>}/>
             <Route path='/country' element={<Colombia/>}/>

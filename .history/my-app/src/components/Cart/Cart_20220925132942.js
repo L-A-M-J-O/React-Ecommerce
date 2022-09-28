@@ -1,6 +1,5 @@
 import '../Cart/Cart.css';
 
-import borrar from '../../Assets/img/basura.png';
 import CartContext from '../../context/CartContext';
 import Table from 'react-bootstrap/Table';
 import BannerCart from '../Banner/BannerCart';
@@ -41,7 +40,7 @@ const CartDetail = () =>{
                                   return (
                                   <tr key={guia.id}>
                                   <td>
-                                        <img width={28} src={borrar} alt='borrar' onClick={ ( )=> removeItem(guia.id) } id={guia.id}/ >
+                                        <img width={28} src='https://www.flaticon.es/svg/vstatic/svg/3914/3914128.svg?token=exp=1662624312~hmac=5c4a140386722a79f79c41010be8e819' alt='borrar' onClick={ ( )=> removeItem(guia.id) } id={guia.id}/ >
                                   </td>
                                   <td>
                                       <Link className='n-a linkProduct ' to={`../Detail/${guia.id}`}>

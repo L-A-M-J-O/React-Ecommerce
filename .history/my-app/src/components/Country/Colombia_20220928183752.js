@@ -1,6 +1,6 @@
 import React from 'react';
+import Cart from '../Cart/Cart'
 
-import ItemList from '../ItemList/ItemList';
 
 import { useState, useEffect  } from "react";
 import { getDocs, collection } from 'firebase/firestore';
@@ -13,27 +13,25 @@ const Colombia = () => {
 
     useEffect(() => {
 
-        getDocs( collection (db, 'products')).then (response => {
+        getDocs( collection (db, 'country')).then (response => {
             const productsAdapted = response.docs.map ( element => {
                 const data = element.data()
                 return {id: element.id,...data}
-
             })
-            setProducts(productsAdapted)
-        }).catch (error => {
-            console.log(error)
-        }).finally (()=> {
-            setLoading(false)
         })
     })
-    
-    if(loading){
-        return<span>Cargando..</span>
-    }
+
+
+
+
+
+
+
+
     
     return (
         <div>
-            <ItemList products={products}/>
+            <Cart/>
         </div>
     );
 }

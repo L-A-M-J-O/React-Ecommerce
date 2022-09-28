@@ -1,4 +1,5 @@
 import React from 'react';
+import Cart from '../Cart/Cart'
 
 import ItemList from '../ItemList/ItemList';
 
@@ -13,11 +14,10 @@ const Colombia = () => {
 
     useEffect(() => {
 
-        getDocs( collection (db, 'products')).then (response => {
+        getDocs( collection (db, 'country')).then (response => {
             const productsAdapted = response.docs.map ( element => {
                 const data = element.data()
                 return {id: element.id,...data}
-
             })
             setProducts(productsAdapted)
         }).catch (error => {

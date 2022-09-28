@@ -29,13 +29,13 @@ const Count = ({stock, onAdd, initial = 1}) =>{
     return(
         <>
             <div className='count'>
-                <button onClick={subtract} className='btnC me-3'><img width={26} src={borrar} alt='borrar'/ > </button>
+                <button onClick={subtract} className='btnC me-3'><img width={26} src='https://www.flaticon.es/svg/vstatic/svg/3914/3914128.svg?token=exp=1662624312~hmac=5c4a140386722a79f79c41010be8e819' alt='borrar'/ > </button>
 
                     <input sonChange={handleChange}  value={quantity}/>
  
                 <button onClick={add} className='btnC ms-3'>
                     <img width={26} src={agregar} alt='agregar'/>
-                </button>   
+                </button>
             </div>
             <button className='btnB mt-5' onClick={()=> onAdd(quantity)}>Add to Cart</button>
         </>

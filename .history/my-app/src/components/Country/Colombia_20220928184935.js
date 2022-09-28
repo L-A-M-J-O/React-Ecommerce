@@ -16,7 +16,10 @@ const Colombia = () => {
         getDocs( collection (db, 'products')).then (response => {
             const productsAdapted = response.docs.map ( element => {
                 const data = element.data()
+                console.log(data)
                 return {id: element.id,...data}
+                
+                // return {id: element.id,...data}
 
             })
             setProducts(productsAdapted)

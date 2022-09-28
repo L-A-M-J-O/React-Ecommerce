@@ -35,7 +35,7 @@ const Count = ({stock, onAdd, initial = 1}) =>{
  
                 <button onClick={add} className='btnC ms-3'>
                     <img width={26} src={agregar} alt='agregar'/>
-                </button>   
+                </button>
             </div>
             <button className='btnB mt-5' onClick={()=> onAdd(quantity)}>Add to Cart</button>
         </>

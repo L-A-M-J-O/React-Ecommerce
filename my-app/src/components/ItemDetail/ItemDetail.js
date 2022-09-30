@@ -7,7 +7,7 @@ import CartContext from '../../context/CartContext'
 import {useState, useContext} from 'react'
 import {Link} from 'react-router-dom'
 
-const ItemDetail = ({id, name, price, description,stock,img}) =>{
+const ItemDetail = ({id, name, price, description,stock,img, country}) =>{
     const [quantityAdd, setQuantityAdd] = useState(0)
     const {addItem, getProductQuantity} = useContext(CartContext)
 
@@ -50,6 +50,9 @@ const ItemDetail = ({id, name, price, description,stock,img}) =>{
                         </div> 
                         <div className='col-6'>
                         <p>Stocks   <b>{stock}</b></p>
+                        </div>
+                        <div className='col-6'>
+                        <p><b>{country}</b></p>
                         </div>
                         <div className='col-8 text-center mt-4'>
                         {quantityAdd <=0 ? <Count stock={stock} initial={productQuantity} onAdd={handleOnAdd}/> : ( <div>

@@ -1,41 +1,54 @@
-import React from 'react';
 
-import ItemList from '../ItemList/ItemList';
 
-import { useState, useEffect  } from "react";
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../../service/firebase';
+import { useEffect, useState } from 'react';
+import getApi from '../helpers/getApi';
 
-const Colombia = () => {
 
-    const [products, setProducts] = useState( [ ] );
-    const [loading, setLoading] = useState(true);
+function Colombia() {
 
-    useEffect(() => {
+    const [data, setData] = useState([])
+    
 
-        getDocs( collection (db, 'products')).then (response => {
-            const productsAdapted = response.docs.map ( element => {
-                const data = element.data()
-                return {id: element.id,...data}
-
+    const updateApi = () => {
+        getApi()
+            .then((newCharacter) => {
+                setData(newCharacter);
             })
-            setProducts(productsAdapted)
-        }).catch (error => {
-            console.log(error)
-        }).finally (()=> {
-            setLoading(false)
-        })
-    })
-    
-    if(loading){
-        return<span>Cargando..</span>
     }
-    
-    return (
-        <div>
-            <ItemList products={products}/>
-        </div>
-    );
+
+    useEffect( () => {
+        updateApi();
+    }, [])
+
+
+    // const filter = (pais) => {
+    //     const result = data.filter((element) => {
+    //         return element.category === pais
+    //     })
+    //     setData(result)
+    // }
+
+  return ( 
+    <div className='container'>
+    {
+        data.map(element => (
+            <div className='row' key={element.id}>
+                <div className='col-10'>
+                    <h4>{element.name}</h4>
+                </div>
+            </div>
+        ))
+    }
+
+        {/* <div className='container'>
+            <div className='row justify-content-center'>
+                <div className='col-6 border'>
+                    <button onClick={ () => filter('Belgica')}>Cambio</button>
+                </div>
+            </div>
+        </div> */}
+    </div>
+  )
 }
 
-export default Colombia;
+export default Colombia

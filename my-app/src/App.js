@@ -18,8 +18,10 @@ function App() {
           <NavbarMain/>
           <Routes className='main'>
           <Route path="/" element={<Banner/>}/>
-            <Route path='/country' element={<Colombia/>}/>
-            <Route path="/cervezas" element={<ItemListContainer/>} />
+            {/* <Route path='/country' element={<Colombia/>}/> */}
+            <Route path="/cervezas" element={<ItemListContainer/>}>
+              <Route path=':country' element={<ItemDetailContainer/>}/>
+            </Route>
             <Route path="Category/:category" element={<ItemListContainer/>} />
             <Route path="Detail/:prodId" element={<ItemDetailContainer/>} />
             <Route path='Cart' element={<Cart/>}/>

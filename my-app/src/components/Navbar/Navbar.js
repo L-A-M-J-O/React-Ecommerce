@@ -8,7 +8,7 @@ function NavbarMain () {
     return (
       <div className='m-header'>
         <Link to='/' className="m-a-home nav-link active" aria-current="page">Home</Link>
-        <Link to='/country/' className="m-a-home nav-link active" aria-current="page">Colombia</Link>
+        <Link to='/cervezas/Colombia' className="m-a-home nav-link active" aria-current="page">Colombia</Link>
         <CartWidget/>
       </div>
     );

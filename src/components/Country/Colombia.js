@@ -1,44 +1,46 @@
-
-import { useState, useEffect } from 'react'
-
 import ItemList from './../ItemList/ItemList';
 
-import { getDocs, collection } from 'firebase/firestore';
+import { useState, useEffect  } from "react";
+import { useParams } from 'react-router-dom';
+import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../service/firebase';
 
+const Colombia = () =>{
 
+    const [products, setProducts] = useState( [ ] );
+    const[loading, setLoading] = useState(true);
 
-function Colombia() {
-  
-  const [products, setProducts] = useState( [ ] );
-  const[loading, setLoading] = useState(true);
+    const {country} = useParams();
+    console.log(country);
 
-  useEffect(() =>{
+    useEffect(() =>{
 
-      getDocs( collection (db, 'products')).then (response => {
-          const productsAdapted = response.docs.map (element => {
-              const data = element.data()
-              return {id: element.id,...data}
-          })
-          setProducts(productsAdapted)
-      }).catch (error => {
-          console.log (error)
-      }).finally ( ( )=> {
-          setLoading(false)
-      })
+        const collectionRef = country ? query(collection(db, 'products'), where('country','==', country)): null
 
-  }, [ ])
+        getDocs(collectionRef).then (response => {
+            const productsAdapted = response.docs.map (element => {
+                const data = element.data()
+                return {id: element.id,...data}
+            })
+            setProducts(productsAdapted)
+        }).catch (error => {
+            console.log (error)
+        }).finally ( ( )=> {
+            setLoading(false)
+        })
 
-  if(loading){
-      return <span>Loading...</span>
-  }
-  return (
+    }, [])
+
+    if(loading){
+        return <span>Loading...</span>
+    }
+    return (
     <>
-    <div className="Hetaira_Main row justify-content-center m-1 mt-4">
-    <ItemList products={products}/>
-    </div>
-</>
-  )
+        <div className="Hetaira_Main row justify-content-center m-1 mt-4">
+        <ItemList products={products}/>
+        </div>
+    </>    
+    )
 }
 
-export default Colombia
+export default Colombia;

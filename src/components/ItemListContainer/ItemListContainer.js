@@ -1,48 +1,44 @@
-import './ItemListContainer.css';
+
+import { useState, useEffect } from 'react'
 
 import ItemList from './../ItemList/ItemList';
 
-import { useState, useEffect  } from "react";
-import { useParams } from 'react-router-dom';
-import { getDocs, collection, query, where } from 'firebase/firestore';
+import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../service/firebase';
 
-const ItemListContainer = ({tittle}) =>{
 
-    const [products, setProducts] = useState( [ ] );
-    const[loading, setLoading] = useState(true);
+function ItemListContainer({tittle}) {
+  
+  const [products, setProducts] = useState( [ ] );
+  const[loading, setLoading] = useState(true);
 
-    const {country} = useParams();
+  useEffect(() =>{
 
-    useEffect(() =>{
+      getDocs( collection (db, 'products')).then (response => {
+          const productsAdapted = response.docs.map (element => {
+              const data = element.data()
+              return {id: element.id,...data}
+          })
+          setProducts(productsAdapted)
+      }).catch (error => {
+          console.log (error)
+      }).finally ( ( )=> {
+          setLoading(false)
+      })
 
-        const collectionRef = country ? query(collection(db, 'products'), where('country','==', country)):null
+  }, [ ])
 
-        getDocs(collectionRef).then (response => {
-            const productsAdapted = response.docs.map (element => {
-                const data = element.data()
-                return {id: element.id,...data}
-            })
-            setProducts(productsAdapted)
-        }).catch (error => {
-            console.log (error)
-        }).finally ( ( )=> {
-            setLoading(false)
-        })
-
-    }, [ ])
-
-    if(loading){
-        return <span>Loading...</span>
-    }
-    return (
+  if(loading){
+      return <span>Loading...</span>
+  }
+  return (
     <>
-        <span>{tittle}</span>
-        <div className="Hetaira_Main row justify-content-center m-1 mt-4">
-        <ItemList products={products}/>
-        </div>
-    </>    
-    )
+    <span>{tittle}</span>
+    <div className="Hetaira_Main row justify-content-center m-1 mt-4">
+    <ItemList products={products}/>
+    </div>
+</>
+  )
 }
 
-export default ItemListContainer;
+export default ItemListContainer

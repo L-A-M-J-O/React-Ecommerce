@@ -15,14 +15,12 @@ function App() {
     <div className="App">
       <CartContextProvider>
         <BrowserRouter>
-          <NavbarMain/>
+          <NavbarMain/> 
           <Routes className='main'>
           <Route path="/" element={<Banner/>}/>
-            {/* <Route path='/country' element={<Colombia/>}/> */}
             <Route path="/cervezas" element={<ItemListContainer/>}>
-              <Route path=':country' element={<ItemDetailContainer/>}/>
+              <Route path='/cervezas:country' element={<Colombia/>}/>
             </Route>
-            <Route path="Category/:category" element={<ItemListContainer/>} />
             <Route path="Detail/:prodId" element={<ItemDetailContainer/>} />
             <Route path='Cart' element={<Cart/>}/>
             <Route path="*" element={<h1>404 Not Page</h1>} />

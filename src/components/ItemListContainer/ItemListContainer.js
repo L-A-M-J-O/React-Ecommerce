@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 
 import ItemList from './../ItemList/ItemList';
 
-import { getDocs, collection } from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
+import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../service/firebase';
 
 
@@ -12,21 +13,25 @@ function ItemListContainer({tittle}) {
   const [products, setProducts] = useState( [ ] );
   const[loading, setLoading] = useState(true);
 
+  const {country} = useParams();
+
   useEffect(() =>{
 
-      getDocs( collection (db, 'products')).then (response => {
-          const productsAdapted = response.docs.map (element => {
-              const data = element.data()
-              return {id: element.id,...data}
-          })
-          setProducts(productsAdapted)
-      }).catch (error => {
-          console.log (error)
-      }).finally ( ( )=> {
-          setLoading(false)
-      })
+    const collectionRef = country ? query(collection(db, 'products'), where('country','==', country)):  collection(db, 'products')
 
-  }, [ ])
+    getDocs(collectionRef).then (response => {
+        const productsAdapted = response.docs.map (element => {
+            const data = element.data()
+            return {id: element.id,...data}
+        })
+        setProducts(productsAdapted)
+    }).catch (error => {
+        console.log (error)
+    }).finally ( ( )=> {
+        setLoading(false)
+    })
+
+}, [country])
 
   if(loading){
       return <span>Loading...</span>

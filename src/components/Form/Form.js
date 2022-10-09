@@ -1,8 +1,6 @@
 import "../Form/Form.css";
 
-import { Link } from "react-router-dom";
-
-export default function Form({ id, name, price, description, img, country }) {
+export default function Form() {
 	return (
 		<div className="container">
 			<div className="row justify-content-center">
@@ -85,14 +83,14 @@ export default function Form({ id, name, price, description, img, country }) {
 								<div className="col-8">
 									<div className="m-card-m col-12 col-sm-4 col-md-2 col-lg-2">
 										<div className="m-card row gx-0 gy-0 mt-3">
-											<img className="m-card-img" src={img} alt="item imagen" />
+											<img className="m-card-img" src="" alt="item imagen" />
 										</div>
 										<div className="row justify-content-center">
 											<div className="col-9 mt-4">
-												<p className="name">{name}</p>
+												<p className="name">a</p>
 											</div>
 											<div className="col-4">
-												<p>{price}</p>
+												<p>a</p>
 											</div>
 										</div>
 									</div>

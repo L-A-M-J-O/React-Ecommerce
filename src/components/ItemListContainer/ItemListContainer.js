@@ -39,10 +39,10 @@ function ItemListContainer({tittle}) {
   return (
     <>
     <span>{tittle}</span>
-    <div className="Hetaira_Main row justify-content-center m-1 mt-4">
-    <ItemList products={products}/>
-    </div>
-</>
+      <div className="Hetaira_Main row justify-content-center m-1 mt-4">
+        <ItemList products={products}/>
+      </div>
+    </>
   )
 }
 
